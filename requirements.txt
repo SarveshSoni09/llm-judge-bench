@@ -1,0 +1,15 @@
+# Core (required)
+numpy>=1.24.0
+pandas>=2.0.0
+pyyaml>=6.0
+
+# LLM Provider (install for live evaluation)
+google-generativeai>=0.8.0
+
+# Visualization (install for notebook)
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Optional (nice to have)
+tqdm>=4.65.0
+jupyter>=1.0.0

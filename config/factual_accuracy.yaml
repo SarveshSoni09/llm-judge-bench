@@ -1,0 +1,40 @@
+name: factual_accuracy
+description: >
+  Evaluates the factual accuracy of a response compared to a gold-standard
+  reference answer. Designed for reference-based judge architectures where
+  ground-truth answers exist.
+
+scale:
+  min: 1
+  max: 10
+  labels:
+    "1": "Completely inaccurate — contradicts the reference on all key facts"
+    "3": "Mostly inaccurate — gets some facts right but has major errors"
+    "5": "Partially accurate — covers some key facts but misses important ones"
+    "7": "Mostly accurate — covers most key facts with minor omissions"
+    "10": "Fully accurate — covers all key facts from the reference with no errors"
+
+dimensions:
+  - name: Factual_Coverage
+    description: >
+      What fraction of the key facts from the reference answer are present
+      in the candidate response?
+    weight: 2.5
+
+  - name: Hallucination_Rate
+    description: >
+      Does the response introduce claims that are not supported by or
+      contradict the reference answer?
+    weight: 3.0
+
+  - name: Precision
+    description: >
+      Of the claims made in the candidate response, what proportion are
+      actually correct according to the reference?
+    weight: 2.0
+
+  - name: Nuance_Preservation
+    description: >
+      Does the candidate response preserve important qualifications,
+      caveats, and nuances from the reference answer?
+    weight: 1.0

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "mt001",
+    "question": "Compose a short poem about the beauty of mathematics and its connection to nature.",
+    "response": "In spirals of shells and petals unfurled,\nFibonacci whispers shape the world.\nThe golden ratio, nature's refrain,\nIn every snowflake, leaf, and rain.\nFrom fractal ferns to stars above,\nMathematics speaks in a language of love.",
+    "human_score": 8,
+    "category": "writing"
+  },
+  {
+    "id": "mt002",
+    "question": "Explain the concept of opportunity cost in economics with a real-world example.",
+    "response": "Opportunity cost is the value of the next best alternative you give up when making a choice. For example, if you spend $50,000 on a year of college, the opportunity cost includes both the tuition and the salary you could have earned working that year instead. If you could have earned $40,000 working, your true cost of college for that year is $90,000. This concept helps economists and individuals understand the true cost of decisions beyond just monetary expenditure.",
+    "human_score": 9,
+    "category": "reasoning"
+  },
+  {
+    "id": "mt003",
+    "question": "Write a Python function that checks if a string is a valid palindrome, considering only alphanumeric characters and ignoring cases.",
+    "response": "def is_palindrome(s: str) -> bool:\n    cleaned = ''.join(c.lower() for c in s if c.isalnum())\n    return cleaned == cleaned[::-1]\n\n# Test cases\nprint(is_palindrome('A man, a plan, a canal: Panama'))  # True\nprint(is_palindrome('race a car'))  # False\nprint(is_palindrome(''))  # True",
+    "human_score": 9,
+    "category": "coding"
+  },
+  {
+    "id": "mt004",
+    "question": "What are the key differences between classical and operant conditioning in psychology?",
+    "response": "Classical conditioning, discovered by Pavlov, involves learning through association between a neutral stimulus and a naturally occurring stimulus. The key difference from operant conditioning is that classical conditioning deals with involuntary responses while operant conditioning involves voluntary behaviors. In operant conditioning, developed by Skinner, behaviors are strengthened or weakened by consequences like rewards and punishments.",
+    "human_score": 7,
+    "category": "reasoning"
+  },
+  {
+    "id": "mt005",
+    "question": "Describe a creative marketing strategy for a new plant-based meat company targeting Gen Z consumers.",
+    "response": "Launch a TikTok-first campaign called '#PlantPlot' where users create short cooking transformation videos. Partner with gaming streamers to do taste-test livestreams. Create limited-edition packaging with QR codes linking to AR experiences showing the environmental impact saved per meal. Build a Discord community where members earn 'impact points' redeemable for products. The key insight: Gen Z responds to authenticity and measurable impact, not corporate messaging.",
+    "human_score": 8,
+    "category": "writing"
+  },
+  {
+    "id": "mt006",
+    "question": "Solve this step by step: If a train travels at 60 mph for the first half of a journey and 40 mph for the second half, what is the average speed for the entire journey?",
+    "response": "The average speed is (60 + 40) / 2 = 50 mph.",
+    "human_score": 2,
+    "category": "math"
+  },
+  {
+    "id": "mt007",
+    "question": "Explain quantum entanglement to a 10-year-old.",
+    "response": "Imagine you have two magical coins. When you flip one and it lands on heads, the other coin instantly shows tails, no matter how far apart they are — even if one is on Earth and the other is on the Moon! Scientists call this 'quantum entanglement.' It's like the coins are secretly connected by an invisible thread. Einstein called it 'spooky action at a distance' because it seemed so weird. Scientists today are trying to use this trick to build super-fast computers and send secret messages.",
+    "human_score": 9,
+    "category": "reasoning"
+  },
+  {
+    "id": "mt008",
+    "question": "Write a SQL query to find the top 5 customers by total purchase amount, including their name and email, from tables 'customers' and 'orders'.",
+    "response": "SELECT c.name, c.email, SUM(o.amount) as total_purchases\nFROM customers c\nJOIN orders o ON c.id = o.customer_id\nGROUP BY c.id, c.name, c.email\nORDER BY total_purchases DESC\nLIMIT 5;",
+    "human_score": 9,
+    "category": "coding"
+  },
+  {
+    "id": "mt009",
+    "question": "What ethical considerations should be taken into account when developing facial recognition technology?",
+    "response": "Several important ethical considerations exist. First, consent and privacy — people should know when their face is being scanned and have the ability to opt out. Second, bias and fairness — studies have shown these systems have higher error rates for certain demographics, which can lead to wrongful identification. Third, surveillance concerns — widespread deployment could create a chilling effect on free speech and assembly. Fourth, data security — facial data is uniquely sensitive since you cannot change your face like a password. Finally, regulation and accountability — clear legal frameworks are needed to govern use by both governments and private companies.",
+    "human_score": 8,
+    "category": "reasoning"
+  },
+  {
+    "id": "mt010",
+    "question": "Create a metaphor-rich paragraph describing the experience of learning a new language.",
+    "response": "Learning a new language is like stepping into a vast ocean where every wave carries unfamiliar sounds. At first, you are a shipwrecked sailor clinging to a dictionary-shaped raft, parsing each syllable like a cryptographer breaking an ancient code. Slowly, the fog lifts. Words become stepping stones across a rushing river, then a bridge, then a highway. Grammar rules that once seemed like impenetrable fortress walls reveal hidden doors. One morning you wake up and realize you were dreaming in this new tongue — the ocean has become your home.",
+    "human_score": 9,
+    "category": "writing"
+  },
+  {
+    "id": "mt011",
+    "question": "Explain the CAP theorem in distributed systems and why it matters.",
+    "response": "CAP theorem states that a distributed system can only guarantee two of three properties: Consistency (all nodes see the same data), Availability (every request gets a response), and Partition tolerance (system works despite network failures). Since network partitions are unavoidable in real systems, the practical choice is between CP (consistent but may be unavailable during partitions, like HBase) and AP (available but may return stale data, like Cassandra). It matters because it forces architects to make explicit trade-offs based on their application's requirements.",
+    "human_score": 9,
+    "category": "coding"
+  },
+  {
+    "id": "mt012",
+    "question": "If you were advising a small country on economic development, what three policies would you prioritize and why?",
+    "response": "I would invest in education, build some roads, and lower taxes.",
+    "human_score": 3,
+    "category": "reasoning"
+  },
+  {
+    "id": "mt013",
+    "question": "Prove that the square root of 2 is irrational.",
+    "response": "Assume for contradiction that √2 is rational, so √2 = a/b where a,b are integers with no common factors. Then 2 = a²/b², so a² = 2b². This means a² is even, so a must be even (since odd² is odd). Write a = 2k. Then (2k)² = 2b², giving 4k² = 2b², so b² = 2k². This means b² is even, so b is even. But if both a and b are even, they share a common factor of 2, contradicting our assumption that a/b is in lowest terms. Therefore √2 is irrational.",
+    "human_score": 10,
+    "category": "math"
+  },
+  {
+    "id": "mt014",
+    "question": "Write a short story opening (3-4 sentences) that hooks the reader using the technique of in medias res.",
+    "response": "The bullet hole in the windshield was still warm when Detective Reyes pressed two fingers against the glass. Behind her, the bridge was gridlocked with abandoned cars, doors flung open as if their owners had simply evaporated mid-commute. Her radio crackled to life with a voice she recognized — one that belonged to a man she had buried three years ago. She reached for her sidearm and realized it was already drawn.",
+    "human_score": 9,
+    "category": "writing"
+  },
+  {
+    "id": "mt015",
+    "question": "Compare and contrast renewable energy sources: solar, wind, and hydroelectric power.",
+    "response": "Solar energy is good because the sun shines. Wind energy comes from wind. Hydroelectric uses water. They are all renewable. Solar panels go on roofs. Wind turbines are tall. Dams make hydroelectric power. All three are better than fossil fuels because they don't pollute as much.",
+    "human_score": 2,
+    "category": "reasoning"
+  },
+  {
+    "id": "mt016",
+    "question": "Design a database schema for a social media platform that supports posts, comments, likes, and user follows.",
+    "response": "CREATE TABLE users (\n  id SERIAL PRIMARY KEY,\n  username VARCHAR(50) UNIQUE NOT NULL,\n  email VARCHAR(255) UNIQUE NOT NULL,\n  display_name VARCHAR(100),\n  bio TEXT,\n  created_at TIMESTAMP DEFAULT NOW()\n);\n\nCREATE TABLE posts (\n  id SERIAL PRIMARY KEY,\n  user_id INT REFERENCES users(id) ON DELETE CASCADE,\n  content TEXT NOT NULL,\n  media_url VARCHAR(500),\n  created_at TIMESTAMP DEFAULT NOW()\n);\n\nCREATE TABLE comments (\n  id SERIAL PRIMARY KEY,\n  post_id INT REFERENCES posts(id) ON DELETE CASCADE,\n  user_id INT REFERENCES users(id) ON DELETE CASCADE,\n  content TEXT NOT NULL,\n  parent_comment_id INT REFERENCES comments(id),\n  created_at TIMESTAMP DEFAULT NOW()\n);\n\nCREATE TABLE likes (\n  user_id INT REFERENCES users(id) ON DELETE CASCADE,\n  post_id INT REFERENCES posts(id) ON DELETE CASCADE,\n  created_at TIMESTAMP DEFAULT NOW(),\n  PRIMARY KEY (user_id, post_id)\n);\n\nCREATE TABLE follows (\n  follower_id INT REFERENCES users(id) ON DELETE CASCADE,\n  following_id INT REFERENCES users(id) ON DELETE CASCADE,\n  created_at TIMESTAMP DEFAULT NOW(),\n  PRIMARY KEY (follower_id, following_id),\n  CHECK (follower_id != following_id)\n);\n\nCREATE INDEX idx_posts_user ON posts(user_id);\nCREATE INDEX idx_comments_post ON comments(post_id);\nCREATE INDEX idx_follows_following ON follows(following_id);",
+    "human_score": 9,
+    "category": "coding"
+  },
+  {
+    "id": "mt017",
+    "question": "A farmer has 100 meters of fencing. What dimensions should a rectangular pen have to maximize the enclosed area?",
+    "response": "Let length = l and width = w. Perimeter constraint: 2l + 2w = 100, so l + w = 50, giving w = 50 - l. Area = l × w = l(50 - l) = 50l - l². To maximize, take the derivative: dA/dl = 50 - 2l = 0, so l = 25. Therefore w = 25. The pen should be a 25m × 25m square, giving a maximum area of 625 m². This confirms the general principle that among all rectangles with fixed perimeter, the square has the largest area.",
+    "human_score": 10,
+    "category": "math"
+  },
+  {
+    "id": "mt018",
+    "question": "Explain the difference between correlation and causation with an example.",
+    "response": "Correlation means two things tend to happen together, but causation means one thing actually makes the other happen. For example, ice cream sales and drowning incidents are correlated — both increase in summer — but eating ice cream doesn't cause drowning. The confounding variable is hot weather, which independently drives both. Mistaking correlation for causation leads to bad decisions. To establish causation, you typically need randomized controlled experiments that isolate the variable of interest while controlling for confounders.",
+    "human_score": 9,
+    "category": "reasoning"
+  },
+  {
+    "id": "mt019",
+    "question": "Write an engaging product description for a pair of noise-canceling headphones aimed at remote workers.",
+    "response": "They are headphones. They cancel noise. Good for working from home. The sound quality is nice. Battery lasts long. They are comfortable. You should buy them.",
+    "human_score": 2,
+    "category": "writing"
+  },
+  {
+    "id": "mt020",
+    "question": "Implement a function that finds the longest common subsequence of two strings.",
+    "response": "def longest_common_subsequence(s1: str, s2: str) -> str:\n    m, n = len(s1), len(s2)\n    # Build DP table\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if s1[i-1] == s2[j-1]:\n                dp[i][j] = dp[i-1][j-1] + 1\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    \n    # Backtrack to find the actual subsequence\n    result = []\n    i, j = m, n\n    while i > 0 and j > 0:\n        if s1[i-1] == s2[j-1]:\n            result.append(s1[i-1])\n            i -= 1\n            j -= 1\n        elif dp[i-1][j] > dp[i][j-1]:\n            i -= 1\n        else:\n            j -= 1\n    \n    return ''.join(reversed(result))\n\n# Example\nprint(longest_common_subsequence('ABCBDAB', 'BDCAB'))  # Output: 'BCAB'",
+    "human_score": 9,
+    "category": "coding"
+  }
+]

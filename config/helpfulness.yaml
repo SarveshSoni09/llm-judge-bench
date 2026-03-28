@@ -1,0 +1,45 @@
+name: helpfulness
+description: >
+  Evaluates the overall helpfulness and quality of an AI assistant's response,
+  measuring how well it addresses the user's needs across multiple dimensions.
+
+scale:
+  min: 1
+  max: 10
+  labels:
+    "1": "Completely unhelpful — fails to address the question"
+    "3": "Minimally helpful — partially addresses the question with significant issues"
+    "5": "Moderately helpful — addresses the main question but lacks depth or has minor issues"
+    "7": "Helpful — addresses the question well with good detail and accuracy"
+    "10": "Exceptionally helpful — thorough, accurate, insightful, and perfectly addresses all aspects"
+
+dimensions:
+  - name: Accuracy
+    description: >
+      Factual correctness of the response. Are claims accurate and verifiable?
+      Are there any hallucinations or incorrect statements?
+    weight: 2.0
+
+  - name: Completeness
+    description: >
+      Does the response fully address all aspects of the question?
+      Are important nuances and edge cases covered?
+    weight: 1.5
+
+  - name: Clarity
+    description: >
+      Is the response well-organized and easy to understand?
+      Is the language precise and free of ambiguity?
+    weight: 1.0
+
+  - name: Relevance
+    description: >
+      Does the response stay focused on the user's actual question?
+      Is there unnecessary or off-topic information?
+    weight: 1.0
+
+  - name: Depth
+    description: >
+      Does the response provide sufficient detail and insight?
+      Does it go beyond surface-level answers when appropriate?
+    weight: 1.0
