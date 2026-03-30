@@ -79,7 +79,7 @@ class GeminiProvider(BaseProvider):
 
     def _rate_limit_wait(self):
         """Enforce minimum gap between requests (free tier: 15 RPM)."""
-        min_interval = 7.0  # slightly over 4s to stay safely under 15 RPM
+        min_interval = 5.0  # slightly over 4s to stay safely under 15 RPM
         elapsed = time.time() - self._last_request_time
         if elapsed < min_interval:
             time.sleep(min_interval - elapsed)

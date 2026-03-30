@@ -56,32 +56,64 @@ class BaseJudge(ABC):
     def _parse_score(self, text: str) -> float:
         """Extract a numeric score from judge output.
 
-        Looks for patterns like [[5]], [Score: 4], or standalone digits
-        within the expected scale range.
+        Handles multiple output formats from different LLMs:
+        - [[5]]                          (MT-Bench style, explicitly requested)
+        - **Overall Score:** 7           (Gemini 2.5-flash markdown bold)
+        - **Score:** 8/10                (fraction format)
+        - Overall Score: 7               (plain text)
+        - Score: 6                       (plain label)
+        - Rating: 9                      (rating label)
+        - Fallback: last number in range (catch-all)
         """
         import re
 
-        # Pattern 1: [[score]]
+        # Pattern 1: [[score]] — explicitly requested format
         match = re.search(r'\[\[(\d+(?:\.\d+)?)\]\]', text)
         if match:
             return float(match.group(1))
 
-        # Pattern 2: [Score: X] or Score: X
-        match = re.search(r'[Ss]core:\s*(\d+(?:\.\d+)?)', text)
+        # Pattern 2: **Overall Score:** X or **Overall Score: X/10**
+        # Handles Gemini 2.5-flash markdown bold output
+        match = re.search(
+            r'\*\*\s*(?:Overall\s+)?(?:Score|Rating)\s*:?\*?\*?\s*(\d+(?:\.\d+)?)',
+            text, re.IGNORECASE
+        )
         if match:
-            return float(match.group(1))
+            val = float(match.group(1))
+            if self.rubric.scale_min <= val <= self.rubric.scale_max:
+                return val
 
-        # Pattern 3: "Rating: X"
-        match = re.search(r'[Rr]ating:\s*(\d+(?:\.\d+)?)', text)
+        # Pattern 3: Overall Score: X (plain, no bold)
+        match = re.search(
+            r'[Oo]verall\s+(?:[Ss]core|[Rr]ating)\s*:?\s*(\d+(?:\.\d+)?)',
+            text
+        )
         if match:
-            return float(match.group(1))
+            val = float(match.group(1))
+            if self.rubric.scale_min <= val <= self.rubric.scale_max:
+                return val
 
-        # Fallback: find any number within scale range at end of text
-        numbers = re.findall(r'\b(\d+(?:\.\d+)?)\b', text[-100:])
-        scale_max = self.rubric.scale_max
+        # Pattern 4: Score: X or Rating: X (plain label)
+        match = re.search(r'(?:[Ss]core|[Rr]ating)\s*:\s*(\d+(?:\.\d+)?)', text)
+        if match:
+            val = float(match.group(1))
+            if self.rubric.scale_min <= val <= self.rubric.scale_max:
+                return val
+
+        # Pattern 5: X/10 fraction format (e.g. "8/10" or "score of 7/10")
+        match = re.search(
+            r'(\d+(?:\.\d+)?)\s*/\s*' + str(self.rubric.scale_max), text
+        )
+        if match:
+            val = float(match.group(1))
+            if self.rubric.scale_min <= val <= self.rubric.scale_max:
+                return val
+
+        # Fallback: last number within scale range in the final 300 chars
+        numbers = re.findall(r'\b(\d+(?:\.\d+)?)\b', text[-300:])
         for n in reversed(numbers):
             val = float(n)
-            if self.rubric.scale_min <= val <= scale_max:
+            if self.rubric.scale_min <= val <= self.rubric.scale_max:
                 return val
 
         return -1.0  # Parsing failure sentinel
